@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { withTheme } from '@material-ui/core/styles';
+import { MenuItem, MenuList } from '@material-ui/core';
 
-class App extends Component {
+class App extends Component<{ theme: any }> {
   render() {
+    console.log(this.props.theme);
+
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <MenuList>
+            <MenuItem>{process.env.REACT_APP_TEST_ENV_VAR}</MenuItem>
+            <MenuItem>Menu item 2</MenuItem>
+            <MenuItem>Menu item 3</MenuItem>
+          </MenuList>
         </header>
       </div>
     );
   }
 }
 
-export default App;
+export default withTheme()(App);
